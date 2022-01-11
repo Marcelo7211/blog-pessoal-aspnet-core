@@ -26,7 +26,7 @@ namespace blogPessoal.Controllers
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Login([FromBody] User model)
+        public async Task<ActionResult<dynamic>> Login([FromBody] UserLogin model)
         {
            
                 var user = _userRepository.GetUserName(model.Usuario, model.Senha);

@@ -1,14 +1,13 @@
 ﻿using blogPessoal.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace blogPessoal.Repository
 {
     public interface IPostagemRepository
     {
-        Task<IEnumerable<Postagem>> Get();
+        Task<List<Postagem>> Get();
 
         Task<Postagem> Get(int Id);
 

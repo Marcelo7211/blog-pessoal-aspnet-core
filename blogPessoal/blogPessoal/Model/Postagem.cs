@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+
 
 namespace blogPessoal.Model
 {
@@ -11,9 +8,16 @@ namespace blogPessoal.Model
     {
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(2)]
+        [MaxLength(140)]
         public string Titulo { get; set; }
 
+        [Required]
+        [MinLength(2)]
+        [MaxLength(800)]
         public string Descricao { get; set; }
+
         [ForeignKey("TemaId")]
         public Tema Tema { get; set; }
 

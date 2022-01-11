@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<Postagem>> GetPostagens()
+        public async Task<List<Postagem>> GetPostagens()
         {
             return await _postagemRepository.Get();
         }

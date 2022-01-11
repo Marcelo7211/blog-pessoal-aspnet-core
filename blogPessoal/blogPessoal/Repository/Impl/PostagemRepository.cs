@@ -29,7 +29,7 @@ namespace blogPessoal.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Postagem>> Get()
+        public async Task<List<Postagem>> Get()
         {
             return await _context.Postagens.Include(p => p.Tema).ToListAsync();
         }

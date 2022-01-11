@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<Tema>> GetTemas()
+        public async Task<List<Tema>> GetTemas()
         {
             return await _temaRepository.Get();
         }
