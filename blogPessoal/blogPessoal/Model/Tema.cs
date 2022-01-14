@@ -1,17 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Json.Serialization;
-
+using System.Threading.Tasks;
 
 namespace blogPessoal.Model
 {
     public class Tema
     {
-        public int Id { get; set; }
+        private int v1;
+        private string v2;
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(140)]
+       
+
+        [Key]
+        public int Id { get; set; }
+        
         public string Descricao { get; set; }
 
         [JsonIgnore]

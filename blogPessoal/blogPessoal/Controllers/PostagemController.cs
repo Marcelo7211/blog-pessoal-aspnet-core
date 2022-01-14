@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<List<Postagem>> GetPostagens()
+        public async Task<IEnumerable<Postagem>> GetPostagens()
         {
             return await _postagemRepository.Get();
         }
@@ -59,14 +59,14 @@ namespace blogPessoal.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult> PutPostagens(int id, [FromBody] Postagem postagem)
+        public async Task<ActionResult<Postagem>> PutPostagens([FromBody] Postagem postagem)
         {
-            if (id != postagem.Id)
+            if (postagem.Id <= 0)
                 return BadRequest();
 
-            await _postagemRepository.Update(postagem);
+            var postagemResult = await _postagemRepository.Update(postagem);
 
-            return NoContent();
+            return postagemResult;
         }
     }
 }

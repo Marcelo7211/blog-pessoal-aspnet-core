@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<List<Tema>> GetTemas()
+        public async Task<IEnumerable<Tema>> GetTemas()
         {
             return await _temaRepository.Get();
         }
@@ -59,14 +59,14 @@ namespace blogPessoal.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult> PutTemas(int id, [FromBody] Tema tema)
+        public async Task<ActionResult<Tema>> PutTemas( [FromBody] Tema tema)
         {
-            if (id != tema.Id)
+            if (tema.Id <= 0)
                 return BadRequest();
 
-            await _temaRepository.Update(tema);
+            var temaResult = await _temaRepository.Update(tema);
 
-            return NoContent();
+            return temaResult;
         }
     }
 }

@@ -16,6 +16,10 @@ namespace blogPessoal.Repository
 
         public async Task<Tema> Create(Tema tema)
         {
+            Tema aux = await _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id));
+            if (aux != null)
+                return aux;
+
             _context.Temas.Add(tema);
             await _context.SaveChangesAsync();
 
@@ -29,7 +33,7 @@ namespace blogPessoal.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Tema>> Get()
+        public async Task<IEnumerable<Tema>> Get()
         {
             return await _context.Temas.Include(t=>t.Postagem).ToListAsync();
         }
@@ -41,10 +45,12 @@ namespace blogPessoal.Repository
 
         }
 
-        public async Task Update(Tema tema)
+        public async Task<Tema> Update(Tema tema)
         {
             _context.Entry(tema).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
+            return tema;
         }
     }
 }
