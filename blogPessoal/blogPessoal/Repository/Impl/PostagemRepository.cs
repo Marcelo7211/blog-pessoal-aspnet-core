@@ -1,4 +1,5 @@
-﻿using blogPessoal.Model;
+﻿using blogPessoal.Data;
+using blogPessoal.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace blogPessoal.Repository
     {
         public readonly Data.AppContext _context;
         private readonly ITemaRepository temaRepository;
+        private readonly IUserRepository userRepository;
 
-        public PostagemRepository(Data.AppContext context, ITemaRepository temaRepository)
+        public PostagemRepository(AppContext context, ITemaRepository temaRepository, IUserRepository userRepository)
         {
             _context = context;
             this.temaRepository = temaRepository;
+            this.userRepository = userRepository;
         }
 
         public async Task<Postagem> Create(Postagem postagem)
@@ -25,6 +28,10 @@ namespace blogPessoal.Repository
 
             if (postagem.Tema != null)
                 postagem.Tema = await this.temaRepository.Create(postagem.Tema);
+
+
+            if (postagem.User != null)
+                postagem.User = await this.userRepository.Create(postagem.User);
 
             _context.Postagens.Add(postagem);
             await _context.SaveChangesAsync();
@@ -42,19 +49,19 @@ namespace blogPessoal.Repository
 
         public async Task<List<Postagem>> Get()
         {
-            return await _context.Postagens.Include(p => p.Tema).ToListAsync();
+            return await _context.Postagens.Include(p => p.Tema).Include(p=> p.User).ToListAsync();
         }
 
         public async Task<Postagem> Get(int id)
         {
-            var PostagemReturn = _context.Postagens.Include(p => p.Tema).FirstAsync(i => i.Id == id);
+            var PostagemReturn = _context.Postagens.Include(p => p.Tema).Include(p => p.User).FirstAsync(i => i.Id == id);
             return await PostagemReturn;
 
         }
 
         public async Task<List<Postagem>> GetTitulo(string Titulo)
         {
-            var PostagemReturn = _context.Postagens.Include(p => p.Tema).Where(p => p.Titulo.ToLower().Contains(Titulo.ToLower())).ToListAsync();
+            var PostagemReturn = _context.Postagens.Include(p => p.Tema).Include(p => p.User).Where(p => p.Titulo.ToLower().Contains(Titulo.ToLower())).ToListAsync();
             return await PostagemReturn;
         }
 

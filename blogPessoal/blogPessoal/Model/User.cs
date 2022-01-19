@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace blogPessoal.Model
@@ -14,6 +15,8 @@ namespace blogPessoal.Model
         public string Senha { get; set; }
         public string Role { get; set; }
 
-      
+
+        [JsonIgnore]
+        public List<Postagem> Postagem { get; set; }
     }
 }

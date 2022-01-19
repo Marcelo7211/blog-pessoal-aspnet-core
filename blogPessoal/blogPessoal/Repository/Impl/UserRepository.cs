@@ -19,6 +19,18 @@ namespace blogPessoal.Repository
 
         public async Task<User> Create(User user)
         {
+            User aux = await _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id));
+            if (aux != null)
+                return aux;
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return user;
+        }
+
+        public async Task<User> CreateUser(User user)
+        {
             var userResult = _context.Users.Where(u => u.Usuario == user.Usuario).FirstOrDefaultAsync();
             if (userResult.Result != null)
             {
@@ -50,7 +62,8 @@ namespace blogPessoal.Repository
             {
                 return null;
             }
-          
+
+            
 
         }
     }

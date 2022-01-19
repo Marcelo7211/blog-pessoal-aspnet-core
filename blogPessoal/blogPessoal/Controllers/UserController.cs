@@ -52,7 +52,7 @@ namespace blogPessoal.Controllers
         public async Task<ActionResult<User>> Cadastrar([FromBody] User user)
         {
    
-                await _userRepository.Create(user);
+                await _userRepository.CreateUser(user);
                 return Created("/api/User/cadastrar", user);
                
         }

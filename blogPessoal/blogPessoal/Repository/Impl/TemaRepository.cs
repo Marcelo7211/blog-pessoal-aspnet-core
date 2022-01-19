@@ -49,7 +49,7 @@ namespace blogPessoal.Repository
 
         public async Task<List<Tema>> GetByDescricao(string descricao)
         {
-            var TemaReturn = _context.Temas.Where(p => p.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync();
+            var TemaReturn = _context.Temas.Include(t => t.Postagem).Where(p => p.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync();
             return await TemaReturn;
         }
             public async Task<Tema> Update(Tema tema)
