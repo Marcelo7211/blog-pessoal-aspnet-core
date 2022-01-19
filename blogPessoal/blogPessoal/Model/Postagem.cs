@@ -17,7 +17,7 @@ namespace blogPessoal.Model
         [ForeignKey("TemaId")]
         public Tema Tema { get; set; }
 
-        [ForeignKey("TemaId")]
+        [ForeignKey("UserId")]
         public User User { get; set; }
     }
 }
