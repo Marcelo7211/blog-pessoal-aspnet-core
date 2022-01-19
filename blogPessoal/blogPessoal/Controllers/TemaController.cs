@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<Tema>> GetTemas()
+        public async Task<List<Tema>> GetTemas()
         {
             return await _temaRepository.Get();
         }
@@ -32,6 +32,13 @@ namespace blogPessoal.Controllers
         public async Task<ActionResult<Tema>> GetTemas(int id)
         {
             return await _temaRepository.Get(id);
+        }
+
+        [HttpGet("descricao/{descricao}")]
+        [Authorize]
+        public async Task<List<Tema>> GetTituloPostagens(string descricao)
+        {
+            return await _temaRepository.GetByDescricao(descricao);
         }
 
         [HttpPost]

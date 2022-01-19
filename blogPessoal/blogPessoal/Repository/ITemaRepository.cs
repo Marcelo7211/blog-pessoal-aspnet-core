@@ -8,9 +8,11 @@ namespace blogPessoal.Repository
 {
     public interface ITemaRepository
     {
-        Task<IEnumerable<Tema>> Get();
+        Task<List<Tema>> Get();
 
         Task<Tema> Get(int Id);
+
+        Task<List<Tema>> GetByDescricao(string descricao);
 
         Task<Tema> Create(Tema tema);
 

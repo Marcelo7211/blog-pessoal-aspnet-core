@@ -40,7 +40,7 @@ namespace blogPessoal.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Postagem>> Get()
+        public async Task<List<Postagem>> Get()
         {
             return await _context.Postagens.Include(p => p.Tema).ToListAsync();
         }
@@ -52,7 +52,7 @@ namespace blogPessoal.Repository
 
         }
 
-        public async Task<IEnumerable<Postagem>> GetTitulo(string Titulo)
+        public async Task<List<Postagem>> GetTitulo(string Titulo)
         {
             var PostagemReturn = _context.Postagens.Include(p => p.Tema).Where(p => p.Titulo.ToLower().Contains(Titulo.ToLower())).ToListAsync();
             return await PostagemReturn;

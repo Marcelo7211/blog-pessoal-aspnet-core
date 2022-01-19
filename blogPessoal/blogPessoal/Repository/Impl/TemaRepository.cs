@@ -1,6 +1,7 @@
 ﻿using blogPessoal.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace blogPessoal.Repository
@@ -34,7 +35,7 @@ namespace blogPessoal.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Tema>> Get()
+        public async Task<List<Tema>> Get()
         {
             return await _context.Temas.Include(t=>t.Postagem).ToListAsync();
         }
@@ -45,7 +46,13 @@ namespace blogPessoal.Repository
             return await TemaReturn;
 
         }
-        public async Task<Tema> Update(Tema tema)
+
+        public async Task<List<Tema>> GetByDescricao(string descricao)
+        {
+            var TemaReturn = _context.Temas.Where(p => p.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync();
+            return await TemaReturn;
+        }
+            public async Task<Tema> Update(Tema tema)
         {
             _context.Entry(tema).State = EntityState.Modified;
             await _context.SaveChangesAsync();

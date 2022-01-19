@@ -22,7 +22,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<Postagem>> GetPostagens()
+        public async Task<List<Postagem>> GetPostagens()
         {
             return await _postagemRepository.Get();
         }
@@ -36,7 +36,7 @@ namespace blogPessoal.Controllers
 
         [HttpGet("titulo/{titulo}")]
         [Authorize]
-        public async Task<IEnumerable<Postagem>> GetTituloPostagens(string titulo)
+        public async Task<List<Postagem>> GetTituloPostagens(string titulo)
         {
             return await _postagemRepository.GetTitulo(titulo);
         }

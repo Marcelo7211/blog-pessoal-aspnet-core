@@ -8,11 +8,11 @@ namespace blogPessoal.Repository
 {
     public interface IPostagemRepository
     {
-        Task<IEnumerable<Postagem>> Get();
+        Task<List<Postagem>> Get();
 
         Task<Postagem> Get(int Id);
 
-        Task<IEnumerable<Postagem>> GetTitulo(string Titulo);
+        Task<List<Postagem>> GetTitulo(string Titulo);
 
         Task<Postagem> Create(Postagem postagem);
 
