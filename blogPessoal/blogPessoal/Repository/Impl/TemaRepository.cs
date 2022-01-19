@@ -7,6 +7,7 @@ namespace blogPessoal.Repository
 {
     public class TemaRepository : ITemaRepository
     {
+
         public readonly Data.AppContext _context;
 
         public TemaRepository(Data.AppContext context)
@@ -16,6 +17,10 @@ namespace blogPessoal.Repository
 
         public async Task<Tema> Create(Tema tema)
         {
+            Tema aux = await _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id));
+            if (aux != null)
+                return aux;
+
             _context.Temas.Add(tema);
             await _context.SaveChangesAsync();
 
@@ -40,11 +45,12 @@ namespace blogPessoal.Repository
             return await TemaReturn;
 
         }
-
-        public async Task Update(Tema tema)
+        public async Task<Tema> Update(Tema tema)
         {
             _context.Entry(tema).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
+            return tema;
         }
     }
 }

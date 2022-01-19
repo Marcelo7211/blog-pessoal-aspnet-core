@@ -34,6 +34,13 @@ namespace blogPessoal.Controllers
             return await _postagemRepository.Get(id);
         }
 
+        [HttpGet("titulo/{titulo}")]
+        [Authorize]
+        public async Task<IEnumerable<Postagem>> GetTituloPostagens(string titulo)
+        {
+            return await _postagemRepository.GetTitulo(titulo);
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Postagem>> PostPostagens([FromBody] Postagem postagem)
@@ -41,6 +48,7 @@ namespace blogPessoal.Controllers
             var newPostagem = await _postagemRepository.Create(postagem);
             return CreatedAtAction(nameof(GetPostagens), new { id = newPostagem.Id }, newPostagem);
         }
+
 
         [HttpDelete("{id}")]
         [Authorize]
@@ -59,14 +67,14 @@ namespace blogPessoal.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult> PutPostagens(int id, [FromBody] Postagem postagem)
+        public async Task<ActionResult<Postagem>> PutPostagens([FromBody] Postagem postagem)
         {
-            if (id != postagem.Id)
+            if (postagem.Id <= 0)
                 return BadRequest();
 
-            await _postagemRepository.Update(postagem);
+            var postagemResult = await _postagemRepository.Update(postagem);
 
-            return NoContent();
+            return postagemResult;
         }
     }
 }

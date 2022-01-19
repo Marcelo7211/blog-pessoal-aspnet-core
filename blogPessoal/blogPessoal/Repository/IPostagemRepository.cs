@@ -12,9 +12,11 @@ namespace blogPessoal.Repository
 
         Task<Postagem> Get(int Id);
 
+        Task<IEnumerable<Postagem>> GetTitulo(string Titulo);
+
         Task<Postagem> Create(Postagem postagem);
 
-        Task Update(Postagem postagem);
+        Task<Postagem> Update(Postagem postagem);
 
         Task Delete(int Id);
     }

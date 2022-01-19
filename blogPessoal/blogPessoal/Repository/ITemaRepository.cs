@@ -14,7 +14,7 @@ namespace blogPessoal.Repository
 
         Task<Tema> Create(Tema tema);
 
-        Task Update(Tema tema);
+        Task<Tema> Update(Tema tema);
 
         Task Delete(int Id);
     }

@@ -26,7 +26,6 @@ C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\blogPessoal.
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\blogPessoal.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\blogPessoal.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\staticwebassets\blogPessoal.StaticWebAssets.Manifest.cache
-C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\staticwebassets\blogPessoal.StaticWebAssets.xml
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\scopedcss\bundle\blogPessoal.styles.css
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\blogPessoal.RazorTargetAssemblyInfo.cache
 C:\Users\DELL\source\repos\blogPessoal\blogPessoal\obj\Debug\net5.0\blogPessoal.csproj.CopyComplete
