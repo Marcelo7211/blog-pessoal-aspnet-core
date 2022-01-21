@@ -17,19 +17,19 @@ namespace blogPessoal.Repository
             _context = context;
         }
 
-        public async Task<User> Create(User user)
+        public User Create(User user)
         {
-            User aux = await _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id));
+            User aux =  _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id)).Result;
             if (aux != null)
                 return aux;
 
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
 
             return user;
         }
 
-        public async Task<User> CreateUser(User user)
+        public User CreateUser(User user)
         {
             var userResult = _context.Users.Where(u => u.Usuario == user.Usuario).FirstOrDefaultAsync();
             if (userResult.Result != null)
@@ -41,14 +41,14 @@ namespace blogPessoal.Repository
                 var valueBytes = Encoding.UTF8.GetBytes(user.Senha);
                 user.Senha = System.Convert.ToBase64String(valueBytes);
                 _context.Users.Add(user);
-                await _context.SaveChangesAsync();
+                _context.SaveChangesAsync();
 
                 return user;
             }
            
         }
 
-        public async Task<User> GetUserName(string usuario, string senha)
+        public User GetUserName(string usuario, string senha)
         {
             
             Task<User> UserReturn = _context.Users.Where(u => u.Usuario == usuario).FirstOrDefaultAsync();
@@ -56,7 +56,7 @@ namespace blogPessoal.Repository
             string passwordDecode = Encoding.UTF8.GetString(valueBytes);
             if ( passwordDecode == senha)
             {
-                return await UserReturn;
+                return  UserReturn.Result;
             }
             else
             {

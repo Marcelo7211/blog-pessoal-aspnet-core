@@ -20,58 +20,58 @@ namespace blogPessoal.Repository
             this.userRepository = userRepository;
         }
 
-        public async Task<Postagem> Create(Postagem postagem)
+        public Postagem Create(Postagem postagem)
         {
-            Postagem aux = await _context.Postagens.FirstOrDefaultAsync(c => c.Id.Equals(postagem.Id));
+            Postagem aux =  _context.Postagens.FirstOrDefaultAsync(c => c.Id.Equals(postagem.Id)).Result;
             if (aux != null)
                 return aux;
 
             if (postagem.Tema != null)
-                postagem.Tema = await this.temaRepository.Create(postagem.Tema);
+                postagem.Tema =  this.temaRepository.Create(postagem.Tema);
 
 
             if (postagem.User != null)
-                postagem.User = await this.userRepository.Create(postagem.User);
+                postagem.User =  this.userRepository.Create(postagem.User);
 
             _context.Postagens.Add(postagem);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
 
             return postagem;
         }
 
 
-        public async Task Delete(int id)
+        public void Delete(int id)
         {
-            var postagemDelete = await _context.Postagens.FindAsync(id);
-            _context.Postagens.Remove(postagemDelete);
-            await _context.SaveChangesAsync();
+            var postagemDelete =  _context.Postagens.FindAsync(id);
+            _context.Postagens.Remove(postagemDelete.Result);
+            _context.SaveChangesAsync();
         }
 
-        public async Task<List<Postagem>> Get()
+        public List<Postagem> GetAll()
         {
-            return await _context.Postagens.Include(p => p.Tema).Include(p=> p.User).ToListAsync();
+            return  _context.Postagens.Include(p => p.Tema).Include(p=> p.User).ToListAsync().Result;
         }
 
-        public async Task<Postagem> Get(int id)
+        public Postagem Get(int id)
         {
             var PostagemReturn = _context.Postagens.Include(p => p.Tema).Include(p => p.User).FirstAsync(i => i.Id == id);
-            return await PostagemReturn;
+            return  PostagemReturn.Result;
 
         }
 
-        public async Task<List<Postagem>> GetTitulo(string Titulo)
+        public List<Postagem> GetTitulo(string Titulo)
         {
             var PostagemReturn = _context.Postagens.Include(p => p.Tema).Include(p => p.User).Where(p => p.Titulo.ToLower().Contains(Titulo.ToLower())).ToListAsync();
-            return await PostagemReturn;
+            return  PostagemReturn.Result;
         }
 
-        public async Task<Postagem> Update(Postagem postagem)
+        public Postagem Update(Postagem postagem)
         {
             if (postagem.Tema != null)
-                postagem.Tema = await this.temaRepository.Create(postagem.Tema);
+                postagem.Tema =  this.temaRepository.Create(postagem.Tema);
 
             _context.Entry(postagem).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
 
             return postagem;
 

@@ -26,15 +26,15 @@ namespace blogPessoal.Controllers
         [HttpPost]
         [Route("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Login([FromBody] User model)
+        public ActionResult<dynamic> Login([FromBody] User model)
         {
            
                 var user = _userRepository.GetUserName(model.Usuario, model.Senha);
-                if (user.Result == null)
+                if (user == null)
                     return Unauthorized(new { message = "Usuário ou senha inválidos" });
                 else
                 {
-                    var userResult = new User { Id = user.Result.Id, Nome = user.Result.Nome, Usuario = user.Result.Usuario, Senha = "", Role = user.Result.Role };
+                    var userResult = new User { Id = user.Id, Nome = user.Nome, Usuario = user.Usuario, Senha = "", Role = user.Role };
 
                     var token = TokenService.GenerateToken(userResult);
                     return new
@@ -49,10 +49,10 @@ namespace blogPessoal.Controllers
         [HttpPost]
         [Route("cadastrar")]
         [AllowAnonymous]
-        public async Task<ActionResult<User>> Cadastrar([FromBody] User user)
+        public ActionResult<User> Cadastrar([FromBody] User user)
         {
    
-                await _userRepository.CreateUser(user);
+                 _userRepository.CreateUser(user);
                 return Created("/api/User/cadastrar", user);
                
         }

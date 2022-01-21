@@ -8,16 +8,16 @@ namespace blogPessoal.Repository
 {
     public interface IPostagemRepository
     {
-        Task<List<Postagem>> Get();
+        List<Postagem> GetAll();
 
-        Task<Postagem> Get(int Id);
+        Postagem Get(int Id);
 
-        Task<List<Postagem>> GetTitulo(string Titulo);
+        List<Postagem> GetTitulo(string Titulo);
 
-        Task<Postagem> Create(Postagem postagem);
+        Postagem Create(Postagem postagem);
 
-        Task<Postagem> Update(Postagem postagem);
+        Postagem Update(Postagem postagem);
 
-        Task Delete(int Id);
+        void Delete(int Id);
     }
 }

@@ -16,46 +16,46 @@ namespace blogPessoal.Repository
             _context = context;
         }
 
-        public async Task<Tema> Create(Tema tema)
+        public Tema Create(Tema tema)
         {
-            Tema aux = await _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id));
+            Tema aux =  _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id)).Result;
             if (aux != null)
                 return aux;
 
             _context.Temas.Add(tema);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
 
             return tema;
         }
 
-        public async Task Delete(int id)
+        public void Delete(int id)
         {
-            var temaDelete = await _context.Temas.FindAsync(id);
+            var temaDelete =  _context.Temas.FindAsync(id).Result;
             _context.Temas.Remove(temaDelete);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
         }
 
-        public async Task<List<Tema>> Get()
+        public  Tema Get(int id)
         {
-            return await _context.Temas.Include(t=>t.Postagem).ToListAsync();
+            var TemaReturn = _context.Temas.Include(t => t.Postagem).FirstAsync(i => i.Id == id).Result;
+            return  TemaReturn;
+
         }
 
-        public async Task<Tema> Get(int id)
+        public List<Tema> GetAll()
         {
-            var TemaReturn = _context.Temas.Include(t => t.Postagem).FirstAsync(i => i.Id == id);
-            return await TemaReturn;
-
+            return _context.Temas.Include(t => t.Postagem).ToListAsync().Result;
         }
 
-        public async Task<List<Tema>> GetByDescricao(string descricao)
+        public  List<Tema> GetByDescricao(string descricao)
         {
-            var TemaReturn = _context.Temas.Include(t => t.Postagem).Where(p => p.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync();
-            return await TemaReturn;
+            var TemaReturn = _context.Temas.Include(t => t.Postagem).Where(p => p.Descricao.ToLower().Contains(descricao.ToLower())).ToListAsync().Result;
+            return  TemaReturn;
         }
-            public async Task<Tema> Update(Tema tema)
+            public  Tema Update(Tema tema)
         {
             _context.Entry(tema).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
 
             return tema;
         }

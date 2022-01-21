@@ -8,16 +8,16 @@ namespace blogPessoal.Repository
 {
     public interface ITemaRepository
     {
-        Task<List<Tema>> Get();
+        List<Tema> GetAll();
 
-        Task<Tema> Get(int Id);
+        Tema Get(int Id);
 
-        Task<List<Tema>> GetByDescricao(string descricao);
+        List<Tema> GetByDescricao(string descricao);
 
-        Task<Tema> Create(Tema tema);
+        Tema Create(Tema tema);
 
-        Task<Tema> Update(Tema tema);
+        Tema Update(Tema tema);
 
-        Task Delete(int Id);
+        void Delete(int Id);
     }
 }

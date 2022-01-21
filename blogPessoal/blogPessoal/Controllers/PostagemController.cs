@@ -4,7 +4,6 @@ using blogPessoal.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace blogPessoal.Controllers
 {
@@ -22,44 +21,44 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<List<Postagem>> GetPostagens()
+        public List<Postagem> GetPostagens()
         {
-            return await _postagemRepository.Get();
+            return  _postagemRepository.GetAll();
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Postagem>> GetPostagens(int id)
+        public ActionResult<Postagem> GetPostagens(int id)
         {
-            return await _postagemRepository.Get(id);
+            return  _postagemRepository.Get(id);
         }
 
         [HttpGet("titulo/{titulo}")]
         [Authorize]
-        public async Task<List<Postagem>> GetTituloPostagens(string titulo)
+        public List<Postagem> GetTituloPostagens(string titulo)
         {
-            return await _postagemRepository.GetTitulo(titulo);
+            return  _postagemRepository.GetTitulo(titulo);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Postagem>> PostPostagens([FromBody] Postagem postagem)
+        public ActionResult<Postagem> PostPostagens([FromBody] Postagem postagem)
         {
-            var newPostagem = await _postagemRepository.Create(postagem);
+            var newPostagem =  _postagemRepository.Create(postagem);
             return CreatedAtAction(nameof(GetPostagens), new { id = newPostagem.Id }, newPostagem);
         }
 
 
         [HttpDelete("{id}")]
         [Authorize]
-        public async Task<ActionResult> Delete(int id)
+        public ActionResult Delete(int id)
         {
-            var postagemToDelete = await _postagemRepository.Get(id);
+            var postagemToDelete =  _postagemRepository.Get(id);
 
             if (postagemToDelete == null)
                 return NotFound();
 
-            await _postagemRepository.Delete(postagemToDelete.Id);
+             _postagemRepository.Delete(postagemToDelete.Id);
             return NoContent();
 
 
@@ -67,12 +66,12 @@ namespace blogPessoal.Controllers
 
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult<Postagem>> PutPostagens([FromBody] Postagem postagem)
+        public ActionResult<Postagem> PutPostagens([FromBody] Postagem postagem)
         {
             if (postagem.Id <= 0)
                 return BadRequest();
 
-            var postagemResult = await _postagemRepository.Update(postagem);
+            var postagemResult =  _postagemRepository.Update(postagem);
 
             return postagemResult;
         }
