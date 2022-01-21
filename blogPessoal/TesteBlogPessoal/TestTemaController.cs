@@ -6,11 +6,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TesteBlogPessoal
 {
     [TestClass]
-    public class TemaController
+    public class TestTemaController
     {
         blogPessoal.Controllers.TemaController _controller;
         ITemaRepository _service;
-        public TemaController()
+        public TestTemaController()
         {
             _service = new TemaRepositoryFake();
             _controller = new blogPessoal.Controllers.TemaController(_service);
