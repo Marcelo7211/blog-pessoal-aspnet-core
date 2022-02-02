@@ -1,16 +1,16 @@
 {
   "Version": 1,
   "ProjectMap": {
-    "6212a63a-0d75-4747-8144-39c9b21e3802": {
-      "ProjectGuid": "6212a63a-0d75-4747-8144-39c9b21e3802",
+    "bc98de24-2e8c-4b26-b412-4f3e298de8a9": {
+      "ProjectGuid": "bc98de24-2e8c-4b26-b412-4f3e298de8a9",
       "DisplayName": "blogPessoal",
       "ColorIndex": 0
     },
-    "2c46fd4d-a2ee-4f00-b840-1f3882a19e4d": {
-      "ProjectGuid": "2c46fd4d-a2ee-4f00-b840-1f3882a19e4d",
-      "DisplayName": "TesteBlogPessoal",
-      "ColorIndex": 1
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 1
 }
