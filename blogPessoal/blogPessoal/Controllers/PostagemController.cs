@@ -19,28 +19,24 @@ namespace blogPessoal.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public List<Postagem> GetPostagens()
         {
             return _postagemRepository.GetAll();
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public ActionResult<Postagem> GetPostagens(int id)
         {
             return _postagemRepository.Get(id);
         }
 
         [HttpGet("titulo/{titulo}")]
-        [Authorize]
         public List<Postagem> GetTituloPostagens(string titulo)
         {
             return _postagemRepository.GetTitulo(titulo);
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult<Postagem> PostPostagens([FromBody] Postagem postagem)
         {
             var newPostagem = _postagemRepository.Create(postagem);
@@ -49,7 +45,6 @@ namespace blogPessoal.Controllers
 
 
         [HttpDelete("{id}")]
-        [Authorize]
         public ActionResult Delete(int id)
         {
             var postagemToDelete = _postagemRepository.Get(id);
@@ -64,7 +59,6 @@ namespace blogPessoal.Controllers
         }
 
         [HttpPut]
-        [Authorize]
         public ActionResult<Postagem> PutPostagens([FromBody] Postagem postagem)
         {
             if (postagem.Id <= 0)

@@ -11,7 +11,6 @@ namespace blogPessoal.Model
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(140)]
         public string Descricao { get; set; }
 

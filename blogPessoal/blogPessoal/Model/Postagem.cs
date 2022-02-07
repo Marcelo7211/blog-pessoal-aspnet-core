@@ -18,7 +18,7 @@ namespace blogPessoal.Model
 
         [Required]
         [StringLength(140)]
-        public string Descricao { get; set; }
+        public string texto { get; set; }
 
         [ForeignKey("TemaId")]
         public Tema Tema { get; set; }
