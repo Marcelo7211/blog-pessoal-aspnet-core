@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -11,13 +12,16 @@ namespace blogPessoal.Model
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(100)]
         public string Titulo { get; set; }
 
-        public string Descricao { get; set; }
+        [Required]
+        [StringLength(140)]
+        public string texto { get; set; }
+
         [ForeignKey("TemaId")]
         public Tema Tema { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }
     }
 }
