@@ -21,9 +21,9 @@ namespace blogPessoal.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult<List<Tema>> GetAllTemas()
+        public List<Tema> GetAllTemas()
         {
-            return Ok(_temaRepository.GetAll());
+            return _temaRepository.GetAll();
         }
 
         [HttpGet("{id}")]
