@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj": {}
+    "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
+    "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
         "projectName": "blogPessoal",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
+        "projectPath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,14 +89,14 @@
         }
       }
     },
-    "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj": {
+    "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
         "projectName": "TesteBlogPessoal",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
+        "projectPath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,8 +113,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
-                "projectPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj"
+              "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
+                "projectPath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj"
               }
             }
           }

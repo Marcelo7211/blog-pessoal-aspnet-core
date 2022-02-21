@@ -19,7 +19,7 @@ namespace TesteBlogPessoal
         public void GetIsPresent()
         {
             // Act
-            var okResult = _controller.GetTemas();
+            var okResult = _controller.GetAllTemas();
             // Assert
             Assert.IsNotNull(okResult);
         }
@@ -27,7 +27,7 @@ namespace TesteBlogPessoal
         public void Get_TotalIgualACinco()
         {
             // Act
-            var okResult = _controller.GetTemas().Count;
+            var okResult = _controller.GetAllTemas().Count;
             // Assert
 
             Assert.AreEqual(5, okResult);
@@ -37,7 +37,7 @@ namespace TesteBlogPessoal
         public void Get_UltimoIgualAJavaScript()
         {
             // Act
-            var okResult = _controller.GetTemas();
+            var okResult = _controller.GetAllTemas();
             // Assert
 
             Assert.AreEqual("JavaScript", okResult[4].Descricao);
@@ -47,7 +47,7 @@ namespace TesteBlogPessoal
         public void Get_UltimoIgualASqlServer()
         {
             // Act
-            var okResult = _controller.GetTemas();
+            var okResult = _controller.GetAllTemas();
             // Assert
 
             Assert.AreEqual("SqlServer", okResult[4].Descricao);

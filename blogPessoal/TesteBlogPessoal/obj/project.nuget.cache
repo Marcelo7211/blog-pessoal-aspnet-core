@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xEWPrmNBNOtfLNmbPTHR7b81hsEVObpKt6O1vDXYTSNTuvF4/ALCxyS0sgOm71zfYXwwAM6EN9obpLwL6gcblw==",
+  "dgSpecHash": "pBrlWQl5WU/R2aNeuTwSL2L2XNA0MUm8AwgjzRyOC05045s0s47KQ+6ysMCWsFreLaCcFazQvvrZuxJrbZ+HAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\source\\repos\\blog-pessoal-aspnet-core\\blogPessoal\\TesteBlogPessoal\\TesteBlogPessoal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

@@ -19,7 +19,5 @@ namespace blogPessoal.Data
         public DbSet<Postagem> Postagens { get; set; }
 
         public DbSet<User> Users { get; set; }
-
-
     }
 }
