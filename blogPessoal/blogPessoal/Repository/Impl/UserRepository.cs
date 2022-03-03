@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace blogPessoal.Repository
 {
-    public  class UserRepository: IUserRepository
+    public class UserRepository : IUserRepository
     {
         public readonly Data.AppContext _context;
 
@@ -19,12 +19,12 @@ namespace blogPessoal.Repository
 
         public User Create(User user)
         {
-            User aux =  _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id)).Result;
+            User aux = _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id)).Result;
             if (aux != null)
                 return aux;
 
             _context.Users.Add(user);
-             _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
 
             return user;
         }
@@ -45,25 +45,25 @@ namespace blogPessoal.Repository
 
                 return user;
             }
-           
+
         }
 
         public User GetUserName(string usuario, string senha)
         {
-            
+
             Task<User> UserReturn = _context.Users.Where(u => u.Usuario == usuario).FirstOrDefaultAsync();
             var valueBytes = System.Convert.FromBase64String(UserReturn.Result.Senha);
             string passwordDecode = Encoding.UTF8.GetString(valueBytes);
-            if ( passwordDecode == senha)
+            if (passwordDecode == senha)
             {
-                return  UserReturn.Result;
+                return UserReturn.Result;
             }
             else
             {
                 return null;
             }
 
-            
+
 
         }
     }
