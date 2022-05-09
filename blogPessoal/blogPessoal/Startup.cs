@@ -52,7 +52,7 @@ namespace blogPessoal
             });
 
             services.AddEntityFrameworkNpgsql()
-            .AddDbContext<AppContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+           .AddDbContext<AppContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IPostagemRepository, PostagemRepository>();
             services.AddScoped<ITemaRepository, TemaRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -66,11 +66,6 @@ namespace blogPessoal
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Data.AppContext context)
         {
-            context.Database.EnsureCreated();
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "blogPessoal v1"));
-
             if (env.IsDevelopment())
             {
                 context.Database.EnsureCreated();
@@ -78,7 +73,7 @@ namespace blogPessoal
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "blogPessoal v1"));
             }
-         
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

@@ -1,7 +1,6 @@
 ﻿using blogPessoal.Data;
 using blogPessoal.Model;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,36 +11,25 @@ namespace blogPessoal.Repository
     {
         public readonly Data.AppContext _context;
 
-        public UserRepository(AppContext context)
+        public UserRepository(Data.AppContext context)
         {
             _context = context;
         }
 
-        public User Create(User user)
+        public async Task<User> CreateUser(User user)
         {
-            User aux = _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id)).Result;
+            var aux = await _context.Users.FirstOrDefaultAsync(c => c.Id.Equals(user.Id));
             if (aux != null)
-                return aux;
-
-            _context.Users.Add(user);
-            _context.SaveChangesAsync();
-
-            return user;
-        }
-
-        public User CreateUser(User user)
-        {
-            var userResult = _context.Users.Where(u => u.Usuario == user.Usuario).FirstOrDefaultAsync();
-            if (userResult.Result != null)
             {
                 return null;
             }
             else
             {
+
                 var valueBytes = Encoding.UTF8.GetBytes(user.Senha);
                 user.Senha = System.Convert.ToBase64String(valueBytes);
-                _context.Users.Add(user);
-                _context.SaveChangesAsync();
+                _context.Users.AddAsync(user);
+                await _context.SaveChangesAsync();
 
                 return user;
             }

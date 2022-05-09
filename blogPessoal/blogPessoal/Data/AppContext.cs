@@ -15,6 +15,13 @@ namespace blogPessoal.Data
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Postagem>()
+            .HasOne(p => p.Tema)
+            .WithMany(b => b.Postagem);
+        }
+
         public DbSet<Tema> Temas { get; set; }
         public DbSet<Postagem> Postagens { get; set; }
 

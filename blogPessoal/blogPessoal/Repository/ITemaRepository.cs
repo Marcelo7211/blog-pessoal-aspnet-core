@@ -10,14 +10,14 @@ namespace blogPessoal.Repository
     {
         List<Tema> GetAll();
 
-        Tema Get(int Id);
+        Task<Tema> GetById(int Id);
 
         List<Tema> GetByDescricao(string descricao);
 
-        Tema Create(Tema tema);
+        Task<Tema> Create(Tema tema);
 
-        Tema Update(Tema tema);
+        Task<Tema> Update(Tema tema);
 
-        void Delete(int Id);
+        Task<Tema> Delete(int Id);
     }
 }

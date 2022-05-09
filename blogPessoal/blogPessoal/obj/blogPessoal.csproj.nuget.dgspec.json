@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {}
+    "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
+    "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
         "projectName": "blogPessoal",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
+        "projectPath": "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

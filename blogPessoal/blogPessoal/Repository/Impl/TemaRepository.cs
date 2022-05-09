@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace blogPessoal.Repository.impl
 {
@@ -14,37 +15,37 @@ namespace blogPessoal.Repository.impl
             _context = context;
         }
 
-        public Tema Create(Tema tema)
+        public async Task<Tema> Create(Tema tema)
         {
-            Tema aux = _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id)).Result;
+            var aux = await _context.Temas.FirstOrDefaultAsync(c => c.Id.Equals(tema.Id));
             if (aux != null)
                 return aux;
-
-            _context.Temas.Add(tema);
-            _context.SaveChangesAsync();
+            _context.Temas.AddAsync(tema);
+            await _context.SaveChangesAsync();
 
             return tema;
         }
 
-        public void Delete(int id)
+        public async Task<Tema> Delete(int id)
         {
-            var temaDelete = _context.Temas.FindAsync(id);
-            _context.Temas.Remove(temaDelete.Result);
-            _context.SaveChangesAsync();
+            var temaDelete = await _context.Temas.FindAsync(id);
+            _context.Temas.Remove(temaDelete);
+            await _context.SaveChangesAsync();
+
+            return null;
         }
 
-        public Tema Get(int id)
+        public async Task<Tema> GetById(int Id)
         {
-            try{
-                var TemaReturn = _context.Temas.FirstAsync(i => i.Id == id).Result;
+            try
+            {
+                var TemaReturn = await _context.Temas.FirstAsync(i => i.Id == Id);
                 return TemaReturn;
-            }catch 
+            }
+            catch
             {
                 return null;
             }
-          
-            
-
         }
 
         public List<Tema> GetAll()
@@ -58,12 +59,10 @@ namespace blogPessoal.Repository.impl
             return TemaReturn;
         }
 
-        public Tema Update(Tema tema)
+        public async Task<Tema> Update(Tema tema)
         {
-           
-
             _context.Entry(tema).State = EntityState.Modified;
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return tema;
         }

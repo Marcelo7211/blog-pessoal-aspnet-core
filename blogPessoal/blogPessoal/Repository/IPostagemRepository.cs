@@ -10,14 +10,14 @@ namespace blogPessoal.Repository
     {
         List<Postagem> GetAll();
 
-        Postagem Get(int Id);
+        Task<Postagem> GetById(int Id);
 
         List<Postagem> GetTitulo(string Titulo);
 
-        Postagem Create(Postagem postagem);
+        Task<Postagem> Create(Postagem postagem);
 
-        Postagem Update(Postagem postagem);
+        Task<Postagem> Update(Postagem postagem);
 
-        void Delete(int Id);
+        Task<Postagem> Delete(int Id);
     }
 }

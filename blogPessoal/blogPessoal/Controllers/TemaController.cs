@@ -3,7 +3,7 @@ using blogPessoal.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 
 namespace blogPessoal.Controllers
 {
@@ -11,7 +11,6 @@ namespace blogPessoal.Controllers
     [ApiController]
     public class TemaController : ControllerBase
     {
-
         private readonly ITemaRepository _temaRepository;
 
         public TemaController(ITemaRepository temaRepository)
@@ -28,18 +27,18 @@ namespace blogPessoal.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
-        public ActionResult<Tema> GetByIdTema(int id)
+        public async Task<ActionResult<Tema>> GetByIdTema(int id)
         {
-            var tema = _temaRepository.Get(id);
+            var tema = await _temaRepository.GetById(id);
             if (tema == null)
             {
-            return NotFound();
+                return NotFound();
             }
             else
             {
                 return Ok(tema);
             }
-          
+
         }
 
 
@@ -52,39 +51,39 @@ namespace blogPessoal.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult<Tema> PostTema([FromBody] Tema tema)
+        public async Task<ActionResult<Tema>> PostTema([FromBody] Tema tema)
         {
-            var newTema = _temaRepository.Create(tema);
-            return CreatedAtAction(nameof(GetAllTemas), new { id = newTema.Id }, newTema);
+            var temaReturn = await _temaRepository.Create(tema);
+            return CreatedAtAction(nameof(GetAllTemas), new { id = temaReturn.Id }, temaReturn);
         }
 
         [HttpPut]
         [Authorize]
-        public ActionResult PutTema([FromBody] Tema tema)
+        public async Task<ActionResult> PutTema([FromBody] Tema tema)
         {
-          
+
             if (tema.Id == 0)
                 return BadRequest();
             else
             {
-                var temaUpdate = _temaRepository.Update(tema);
+                var temaUpdate = await _temaRepository.Update(tema);
 
                 return Ok(temaUpdate);
 
             }
-          
+
         }
 
         [HttpDelete("{id}")]
         [Authorize]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteTema(int id)
         {
-            var temaToDelete = _temaRepository.Get(id);
+            var temaToDelete = await _temaRepository.GetById(id);
 
             if (temaToDelete == null)
                 return NotFound();
 
-            _temaRepository.Delete(temaToDelete.Id);
+            await _temaRepository.Delete(temaToDelete.Id);
             return NoContent();
 
 

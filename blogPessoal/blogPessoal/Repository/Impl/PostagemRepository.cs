@@ -16,32 +16,34 @@ namespace blogPessoal.Repository
         {
             _context = context;
             this.temaRepository = temaRepository;
-        
+
         }
 
-        public Postagem Create(Postagem postagem)
+        public async Task<Postagem> Create(Postagem postagem)
         {
-            Postagem aux = _context.Postagens.FirstOrDefaultAsync(c => c.Id.Equals(postagem.Id)).Result;
+
+
+            var aux = await _context.Postagens.FirstOrDefaultAsync(c => c.Id.Equals(postagem.Id));
             if (aux != null)
                 return aux;
 
             if (postagem.Tema != null)
-                postagem.Tema = this.temaRepository.Create(postagem.Tema);
+                postagem.Tema = await this.temaRepository.Create(postagem.Tema);
 
-
-
-            _context.Postagens.Add(postagem);
-            _context.SaveChangesAsync();
+            _context.Postagens.AddAsync(postagem);
+            await _context.SaveChangesAsync();
 
             return postagem;
         }
 
 
-        public void Delete(int id)
+        public async Task<Postagem> Delete(int id)
         {
-            var postagemDelete = _context.Postagens.FindAsync(id);
-            _context.Postagens.Remove(postagemDelete.Result);
-            _context.SaveChangesAsync();
+            var postagemDelete = await _context.Postagens.FindAsync(id);
+            _context.Postagens.Remove(postagemDelete);
+            await _context.SaveChangesAsync();
+
+            return null;
         }
 
         public List<Postagem> GetAll()
@@ -49,12 +51,12 @@ namespace blogPessoal.Repository
             return _context.Postagens.Include(p => p.Tema).ToListAsync().Result;
         }
 
-        public Postagem Get(int id)
+        public async Task<Postagem> GetById(int id)
         {
             try
             {
-                var PostagemReturn = _context.Postagens.Include(p => p.Tema).FirstAsync(i => i.Id == id);
-                return PostagemReturn.Result;
+                var PostagemReturn = await _context.Postagens.Include(p => p.Tema).FirstAsync(i => i.Id == id);
+                return PostagemReturn;
             }
             catch
             {
@@ -69,13 +71,13 @@ namespace blogPessoal.Repository
             return PostagemReturn.Result;
         }
 
-        public Postagem Update(Postagem postagem)
+        public async Task<Postagem> Update(Postagem postagem)
         {
             if (postagem.Tema != null)
-                postagem.Tema = this.temaRepository.Create(postagem.Tema);
+                postagem.Tema = await this.temaRepository.Create(postagem.Tema);
 
             _context.Entry(postagem).State = EntityState.Modified;
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return postagem;
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "97Hng1tmXiyzQksaPYg7pr2JmSBb0461mmb4ciorhIdEKwZ79iwne65SuwK/UtwVFX85NyM5HIadhTh6nSjtSQ==",
+  "dgSpecHash": "fbCFVrsZlz2afJZjZhUCT/ZcbPyiyXWc1oiMeVCaCp9WksR8HfOa32IqdcFFR4IvbCptzpPoWBJwb3G/2bCBDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\source\\repos\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\Downloads\\asp-net-5-msyql-main\\blog-pessoal-aspnet-core\\blogPessoal\\blogPessoal\\blogPessoal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

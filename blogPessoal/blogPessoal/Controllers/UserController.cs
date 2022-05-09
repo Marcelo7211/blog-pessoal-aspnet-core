@@ -3,7 +3,7 @@ using blogPessoal.Repository;
 using blogPessoal.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Threading.Tasks;
 
 namespace blogPessoal.Controllers
 {
@@ -47,11 +47,11 @@ namespace blogPessoal.Controllers
         [HttpPost]
         [Route("cadastrar")]
         [AllowAnonymous]
-        public ActionResult<User> Cadastrar([FromBody] User user)
+        public async Task<ActionResult<User>> Cadastrar([FromBody] User user)
         {
 
-            _userRepository.CreateUser(user);
-            return Created("/api/User/cadastrar", user);
+            var newBook = await _userRepository.CreateUser(user);
+            return newBook;
 
         }
 

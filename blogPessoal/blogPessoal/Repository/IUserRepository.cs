@@ -11,8 +11,8 @@ namespace blogPessoal.Repository
         User GetUserName(string usuario, string senha);
 
 
-        User CreateUser(User user);
+        Task<User> CreateUser(User user);
 
-        User Create(User user);
+
     }
 }
